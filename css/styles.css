@@ -1,0 +1,95 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: "Georgia", serif;
+    background: url('images/redstone_bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        font-family: "Arial", "Helvetica", sans-serif;
+}
+.container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.7);
+    border: 2px solid #b22222;
+}
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #ffcc00;
+}
+.battle-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+.battle-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid #ffcc00;
+    border-radius: 5px;
+    background: linear-gradient(145deg, #800000, #b22222);
+    color: #ffcc00;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+    transition: transform 0.2s, background 0.3s;
+}
+button:hover {
+    background: linear-gradient(145deg, #b22222, #ff0000);
+    transform: scale(1.1);
+}
+.record-box {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 0, 0, 0.5);
+    border: 1px solid #ffcc00;
+    width: 200px;
+    text-align: center;
+}
+.record-box h2 {
+    font-size: 20px;
+    color: #ffcc00;
+}
+.record-content {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #ffcc00;
+}
+
+.undo-button.small {
+    font-size: 12px;
+    padding: 4px 8px;
+    margin-top: 5px;
+    background: #660000;
+    color: #ffcc00;
+    border: 1px solid #ffcc00;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+.undo-button.small:hover {
+    background: #990000;
+    transform: scale(1.1);
+}
+
+.larger-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffcc00;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}

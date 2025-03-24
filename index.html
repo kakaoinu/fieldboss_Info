@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フィールドボス討伐情報</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>フィールドボス討伐情報</h1>
+        <p class="description">各層のボスを討伐時にボタンを押下することで、次回のリポップ情報を出力します。<br>誤ってクリックした場合は取り消しボタンを押してください。</p>
+        <div class="battle-info">
+            <div class="battle-row">
+                <button class="battle-button" onclick="showFutureTime(1)">南部(1層)討伐</button>
+                <div id="record1" class="record-box">
+                    <h2>次回リポップ時刻</h2>
+                    <div class="record-content larger-text"></div>
+                    <button onclick="undoLastEntry(1)" class="undo-button small">取り消し</button>
+                </div>
+            </div>
+            <div class="battle-row">
+                <button class="battle-button" onclick="showFutureTime(2)">北部(2層)討伐</button>
+                <div id="record2" class="record-box">
+                    <h2>次回リポップ時刻</h2>
+                    <div class="record-content larger-text"></div>
+                    <button onclick="undoLastEntry(2)" class="undo-button small">取り消し</button>
+                </div>
+            </div>
+            <div class="battle-row">
+                <button class="battle-button" onclick="showFutureTime(3)">飼育場(3層)討伐</button>
+                <div id="record3" class="record-box">
+                    <h2>次回リポップ時刻</h2>
+                    <div class="record-content larger-text"></div>
+                    <button onclick="undoLastEntry(3)" class="undo-button small">取り消し</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
