@@ -93,3 +93,10 @@ button:hover {
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
     text-align: center;
 }
+
+.defeat-time,
+.respawn-time {
+    font-size: 16px;
+    color: #ffcc00;
+    margin-top: 8px;
+}
