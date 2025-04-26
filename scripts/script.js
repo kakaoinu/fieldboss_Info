@@ -43,3 +43,13 @@ function copyOutput() {
   document.execCommand("copy");
   alert("コピーしました！");
 }
+
+function updateClock() {
+  const now = new Date();
+  const clockElement = document.getElementById("clock");
+  clockElement.textContent = now.toLocaleTimeString('ja-JP', { hour12: false });
+}
+
+// ページロード時に開始
+setInterval(updateClock, 1000);
+updateClock(); // 最初にすぐ表示
