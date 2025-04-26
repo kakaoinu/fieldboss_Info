@@ -5,51 +5,78 @@ const bossTemplates = {
 };
 
 let outputLines = [];
+let lastBossId = null; // 最後に押されたボタンIDを記録
+let pressTimes = {}; // ボタンごとの押下時間を記録
 
 function showFutureTime(buttonId) {
   const now = new Date();
-  const future = new Date(now.getTime() + 2 * 60 * 60 * 1000 + 10 * 1000);
+  let future;
+  // 2時間10秒後
+  future = new Date(now.getTime() + 2 * 60 * 60 * 1000 + 10 * 1000);
+  
   const timeStr = now.toLocaleTimeString('ja-JP', { hour12: false });
+  const futureStr = future.toLocaleTimeString('ja-JP', { hour12: false });
 
-  const recordContent = document.querySelector(`#record${buttonId} .record-content`);
-  recordContent.textContent = future.toLocaleTimeString('ja-JP', { hour12: false });
+  const defeatTimeElement = document.querySelector(`#record${buttonId} .defeat-time`);
+  const respawnTimeElement = document.querySelector(`#record${buttonId} .respawn-time`);
 
-  const template = `${bossTemplates[buttonId]} ${timeStr}`;
+  if (defeatTimeElement) {
+    defeatTimeElement.textContent = `討伐時刻：${timeStr}`;
+  }
+  if (respawnTimeElement) {
+    respawnTimeElement.textContent = `リポップ予定：${futureStr}`;
+  }
+  pressTimes[buttonId] = timeStr; // 押した時間を記録
+
+  const template = `${bossTemplates[buttonId]}  ${timeStr}`;
   outputLines.push(template);
-  updateOutputText();
+  lastBossId = buttonId;
+  updateOutputText(futureStr);
 }
 
 function undoLastEntry(buttonId) {
-  const recordContent = document.querySelector(`#record${buttonId} .record-content`);
-  if (recordContent.lastChild) {
-      recordContent.removeChild(recordContent.lastChild);
+  const defeatTimeElement = document.querySelector(`#record${buttonId} .defeat-time`);
+  const respawnTimeElement = document.querySelector(`#record${buttonId} .respawn-time`);
+
+  if (defeatTimeElement) {
+      defeatTimeElement.textContent = "";
   }
+  if (respawnTimeElement) {
+      respawnTimeElement.textContent = "";
+  }
+  delete pressTimes[buttonId];
+
+  // 対応する行もoutputLinesから削除する
+  const bossName = bossTemplates[buttonId];
+  outputLines = outputLines.filter(line => !line.startsWith(bossName));
+
+  updateOutputText(); // テキストエリアも更新する
 }
 
-function updateOutputText() {
-  let result = outputLines.join('\n');
-  if (outputLines.length > 0) {
-      const lastTime = new Date();
-      lastTime.setHours(lastTime.getHours() + 2, lastTime.getMinutes(), lastTime.getSeconds() + 10);
-      const nextStr = lastTime.toLocaleTimeString('ja-JP', { hour12: false });
-      result += `\n次回フィールドボス出現時刻  ${nextStr}～`;
-  }
-  document.getElementById("outputText").value = result;
+
+function updateOutputText(future) {
+    let result = outputLines.join('\n');
+    if (outputLines.length > 0) {
+        if (lastBossId === 1) {
+          nextRepop = future
+        }
+        result += `\n次回フィールドボス出現時刻  ${nextRepop}～`;
+    }
+    document.getElementById("outputText").value = result;
 }
 
 function copyOutput() {
-  const textarea = document.getElementById("outputText");
-  textarea.select();
-  document.execCommand("copy");
-  alert("コピーしました！");
+    const textarea = document.getElementById("outputText");
+    textarea.select();
+    document.execCommand("copy");
+    alert("コピーしました！");
 }
 
 function updateClock() {
-  const now = new Date();
-  const clockElement = document.getElementById("clock");
-  clockElement.textContent = now.toLocaleTimeString('ja-JP', { hour12: false });
+    const now = new Date();
+    const clockElement = document.getElementById("clock");
+    clockElement.textContent = now.toLocaleTimeString('ja-JP', { hour12: false });
 }
 
-// ページロード時に開始
 setInterval(updateClock, 1000);
-updateClock(); // 最初にすぐ表示
+updateClock();
