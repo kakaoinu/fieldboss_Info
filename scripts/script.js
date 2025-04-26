@@ -1,7 +1,7 @@
 const bossTemplates = {
-  1: "1層 南部  のエリアボス(真ん中上部)     : ",
-  2: "2層 北部  のエリアボス(右上真ん中寄り) : ",
-  3: "3層 飼育場のエリアボス(真ん中上部)     : "
+  1: "1層 南部　のエリアボス(真ん中上部)　　 　:　",
+  2: "2層 北部　のエリアボス(右上真ん中寄り)　:　",
+  3: "3層 飼育場のエリアボス(真ん中上部)　　　:　"
 };
 
 let outputLines = [];
@@ -60,7 +60,7 @@ function updateOutputText(future) {
         if (lastBossId === 1) {
           nextRepop = future
         }
-        result += `\n次回フィールドボス出現時刻  ${nextRepop}～`;
+        result += `\n次回フィールドボス出現時刻　　　　　　  :　${nextRepop}～`;
     }
     document.getElementById("outputText").value = result;
 }
