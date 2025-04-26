@@ -10,29 +10,36 @@
     <div class="container">
         <h1>フィールドボス討伐情報</h1>
         <div id="clock" class="larger-text" style="margin-bottom: 10px;"></div>
-        <p class="description">各層のボスを討伐時にボタンを押下することで、次回のリポップ情報を出力します。</p>
+        <p class="description">各層のボスを討伐時にボタンを押下することで、次回のリポップ情報を出力します。<br>
+        F5キーで画面をリロードすることで記録内容はすべてリセットされます</p>
+
         <div class="battle-info">
             <div class="battle-row">
                 <button class="battle-button" onclick="showFutureTime(1)">南部(1層)討伐</button>
                 <div id="record1" class="record-box">
-                    <h2>次回リポップ時刻</h2>
-                    <div class="record-content larger-text"></div>
+                    <h2>1層討伐情報</h2>
+                    <div class="defeat-time"></div>
+                    <div class="respawn-time"></div>
                     <button onclick="undoLastEntry(1)" class="undo-button small">取り消し</button>
                 </div>
             </div>
+
             <div class="battle-row">
                 <button class="battle-button" onclick="showFutureTime(2)">北部(2層)討伐</button>
                 <div id="record2" class="record-box">
-                    <h2>次回リポップ時刻</h2>
-                    <div class="record-content larger-text"></div>
+                    <h2>2層討伐情報</h2>
+                    <div class="defeat-time"></div>
+                    <div class="respawn-time"></div>
                     <button onclick="undoLastEntry(2)" class="undo-button small">取り消し</button>
                 </div>
             </div>
+
             <div class="battle-row">
                 <button class="battle-button" onclick="showFutureTime(3)">飼育場(3層)討伐</button>
                 <div id="record3" class="record-box">
-                    <h2>次回リポップ時刻</h2>
-                    <div class="record-content larger-text"></div>
+                    <h2>3層討伐情報</h2>
+                    <div class="defeat-time"></div>
+                    <div class="respawn-time"></div>
                     <button onclick="undoLastEntry(3)" class="undo-button small">取り消し</button>
                 </div>
             </div>
